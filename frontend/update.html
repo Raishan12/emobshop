@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <script src="/js/update.js" defer></script>
+    <link rel="stylesheet" href="/css/addstyle.css">
+</head>
+<body>
+    <form onsubmit="confirmation(event)">
+        <label for="mobilename">Mobile Name: </label>
+        <input type="text" name="mobilename" id="mobilename">
+        <br>
+        <label for="brandname">Brand Name: </label>
+        <input type="text" name="brandname" id="brandname">
+        <br>
+        <label for="ram">Ram: </label>
+        <input type="text" name="ram" id="ram">
+        <br>
+        <label for="storage">Storage: </label>
+        <input type="text" name="storage" id="storage">
+        <br>
+        <label for="color">Color: </label>
+        <div class="colorsection" id="colorsection">
+            <div class="colorfield">
+                <label for="color0">Color 1: </label>
+                <input type="text" name="color" id="color0" class="color">
+                <label for="quantity0">Quantity: </label>
+                <input type="number" name="quantity" id="quantity0" class="quantity" min="1">
+            </div>
+        </div>
+        <input type="button" value="+" onclick="addcolorsection()">
+        <br>
+        <!-- <label for="quantity">Quantity: </label> -->
+        <!-- <input type="text" name="quantity" id="quantity"> -->
+        <br>
+        <label for="images">Images: </label>
+        <input type="file" name="images" id="images" multiple>
+        <div id="previewimages" class="previewimages" style="display: flex; flex-wrap: wrap;"></div>
+        <br>
+        <label for="price">Price: </label>
+        <input type="text" name="price" id="price">
+        <br>
+        <input type="submit" value="Save">
+    </form>
+    <div class="blackbackground" id="blackbackground"></div>
+    <div class="confirmation" id="confirmation" style="display: none; background-color: white;">
+        
+    </div>
+</body>
+</html>

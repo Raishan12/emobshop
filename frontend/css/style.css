@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    color: white;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+    align-items: center;
+    background-color: green;
+}
+
+input[type="search"] {
+    width: 350px;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.addbutton {
+    background-color: rgb(25, 70, 25);
+    color: white;
+    padding: 7px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 7%;
+}
+
+.card {
+    border: 1px solid black;
+    width: 190px;
+    border-radius: 10px;
+    margin: 20px 20px;
+}
+
+.card img {
+    padding: 15px;
+}
+
+.title {
+    font-size: 19px;
+    font-weight: bold;
+}
+
