@@ -19,3 +19,97 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+form {
+    background-color: white;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px 20px 60px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    display: block;
+}
+
+.lab {
+    display: inline;
+}
+
+input[type="text"], input[type="date"], select {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.imagesdiv {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+input[type="submit"] {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #eeeeee;
+}
+
+
+.colorfield {
+    display: flex;
+    gap: 20px;
+}
+
+.colorfield input {
+    width: 340px;
+}
+
+.l, .r{
+    display: flex;
+    gap: 10px
+}
+
+input[type="button"] {
+    width: 170px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    border: 1px solid rgb(212, 212, 212);
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.previewimages {
+    display: flex;
+    flex-wrap: wrap;
+    height: 60px;
+}
+
+.previewimages img {
+    height: 100%;
+}
+
+.pdiv {
+    height: 30px;
+    width: 30px;
+}
+
+.pdiv img {
+    width: 100%;
+}

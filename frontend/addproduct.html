@@ -9,6 +9,7 @@
 </head>
 <body>
     <form onsubmit="confirmation(event)">
+        <h1>ADD NEW PRODUCT</h1>
         <label for="mobilename">Mobile Name: </label>
         <input type="text" name="mobilename" id="mobilename">
         <br>
@@ -24,13 +25,17 @@
         <label for="color">Color: </label>
         <div class="colorsection" id="colorsection">
             <div class="colorfield">
-                <label for="color0">Color 1: </label>
-                <input type="text" name="color" id="color0" class="color">
-                <label for="quantity0">Quantity: </label>
-                <input type="number" name="quantity" id="quantity0" class="quantity" min="1">
+                <div class="l">
+                    <label for="color0">Color1: </label>
+                    <input type="text" name="color" id="color0" class="color">
+                </div>
+                <div class="r">
+                    <label for="quantity0">Quantity1: </label>
+                    <input type="text" name="quantity" id="quantity0" class="quantity" min="1">
+                </div>
             </div>
         </div>
-        <input type="button" value="+" onclick="addcolorsection()">
+        <input type="button" value="Add More Color" onclick="addcolorsection()">
         <br>
         <!-- <label for="quantity">Quantity: </label> -->
         <!-- <input type="text" name="quantity" id="quantity"> -->

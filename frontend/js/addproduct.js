@@ -50,7 +50,7 @@ function confirmation(event) {
 
     let cimg = ""
     for (let all of allimages) {
-        cimg += `<img src="${all}" alt="Preview of selected Mobile" id="imgs" style="width:200px">`
+        cimg += `<div class="pdiv"><img src="${all}" alt="Preview of selected Mobile" id="imgs"></div>`
     }
 
     let confirmation = `
@@ -60,7 +60,7 @@ function confirmation(event) {
     <p><b>Storage: </b> ${content.storage}GB</p>
     ${table}
     <p><b>Images: </b> </p>
-    <div>${cimg}</div>
+    <div >${cimg}</div>
     <p><b>Price: </b> ₹${content.price}</p>
     <button onclick="addproduct()">Submit</button>
 `;
@@ -101,10 +101,14 @@ let i = 1
 function addcolorsection() {
     let newColorField = `
         <div class="colorfield">
-            <label for="color${i}">Color ${i + 1}: </label>
-            <input type="text" name="color" id="color${i}" class="color">
-            <label for="quantity${i}">Quantity: </label>
-            <input type="number" name="quantity" id="quantity${i}" class="quantity${i}">
+                <div class="l">
+                    <label for="color${i}">Color${i + 1}: </label>
+                    <input type="text" name="color" id="color${i}" class="color">
+                </div>
+                <div class="r">
+                    <label for="quantity${i}">Quantity${i + 1}: </label>
+                    <input type="text" name="quantity" id="quantity${i}" class="quantity">
+                </div>  
         </div>`
     i++;
     colorsection.innerHTML += newColorField;
@@ -118,7 +122,7 @@ document.getElementById("images").addEventListener("change", async (e) => {
     for (let file of e.target.files) {
         let res = await convertBase64(file)
         allimages.push(res)
-        str += `<img src="${res}" alt="Preview of seleceted Mobile" id="imgs" style="width:200px">`
+        str += `<img src="${res}" alt="Preview of seleceted Mobile" id="imgs">`
     }
     document.getElementById("previewimages").innerHTML = str
 })

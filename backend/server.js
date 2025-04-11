@@ -3,6 +3,7 @@ import path from "path"
 import url from "url"
 import connection from "./connection.js"
 import mobileRoute from "./routes/mobile_route.js"
+import cartRoute from "./routes/cart_route.js"
 
 const port = 8000
 const __filename = url.fileURLToPath(import.meta.url)
@@ -14,6 +15,7 @@ const app = express()
 app.use(express.static(frontend))
 app.use(express.json({limit:"100mb"}))
 app.use("/api/product", mobileRoute)
+app.use("/api/cart", cartRoute)
 
 app.get("/addproductpage",(req,res)=>{
     try {
@@ -36,6 +38,15 @@ app.get("/product",(req,res)=>{
 app.get("/update",(req,res)=>{
     try {
         res.status(200).sendFile(path.join(frontend,"update.html"))
+    } catch (error) {
+        console.log(error);
+        res.status(404).send("page not found",error)
+    }
+})
+
+app.get("/cart",(req,res)=>{
+    try {
+        res.status(200).sendFile(path.join(frontend,"cart.html"))
     } catch (error) {
         console.log(error);
         res.status(404).send("page not found",error)
