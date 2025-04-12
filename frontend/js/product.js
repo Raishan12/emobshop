@@ -3,6 +3,28 @@ console.log("this is product page's js")
 const params = new URLSearchParams(window.location.search)
 let id = params.get("id")
 console.log(id)
+let mobilename = null
+let brandname = null
+let flag = 0
+async function checkCart(){
+
+    try {
+        const res = await fetch("http://localhost:8000/api/cart/getdata",{
+            method: "POST",
+            headers: {"Content-type":"application/json"},
+            body: JSON.stringify({mobilename, brandname})
+        })
+        const data = await res.json()
+        console.log(res)
+        console.log(data)
+        if(data.length==0){
+            flag = 1
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 let cartContent = null
 async function product(){
@@ -11,7 +33,10 @@ async function product(){
         let data = await res.json()
         console.log(data);
 
-        
+        mobilename = data.mobilename
+        brandname = data.brandname
+        await checkCart()
+
         image = data.thumbnail
     
         let smallImages = ""
@@ -21,12 +46,16 @@ async function product(){
             `
         })
 
+        let btnContent=flag==0?"Go to Cart":"Add to Cart"
+
         btn=`
         <div class="buttons">
-        <div class="addtocart" onclick="cart()">Cart</div>
+        <div class="addtocart" id="cartbutton">${btnContent}</div>
         <div class="buybutton">Buy</div>
         </div>
         `
+
+        
 
         colordd=""
         quantity=0
@@ -59,6 +88,13 @@ async function product(){
         <p class="stock">Stock: ${quantity}</p>
          ${btn}
         `
+        document.getElementById("cartbutton").addEventListener("click",()=>{
+            if(document.getElementById("cartbutton").textContent=="Add to Cart"){
+                cart()
+            }else{
+                window.location.href="/cart"
+            }
+        })
         document.getElementById("selectcolor").addEventListener("change",()=>{
             let selectedColor = document.getElementById("selectcolor").value
             console.log(selectedColor);
@@ -75,6 +111,7 @@ async function product(){
             }
             
         })
+
 
         
 
@@ -97,7 +134,7 @@ async function productDelete() {
     console.log(id);
     try {
         const res = await fetch(`http://localhost:8000/api/product/delete/${id}`)
-        const data = res.json()
+        const data = await res.json()
         if(res.status==200){
             window.location.href="http://localhost:8000/"  
         } else {
@@ -119,6 +156,7 @@ function ham(){
 
 
 
+
 async function cart(){
 
 
@@ -129,13 +167,12 @@ async function cart(){
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(cartContent)
         })
-        const data = res.json()
+        const data = await res.json()
         if(res.status===201){
             alert("Added to Cart")
             window.location.href="/cart"
         }
     } catch (error) {
         console.log(error)
-        alert(error)
     }
 }
